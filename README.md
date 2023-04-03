@@ -1,3 +1,10 @@
+# Contract
+
+The implemented MultiSigWallet contract can be found in /contracts/MultiSigWallet.sol
+
+# Test
+
+The implemented tests can be found in /tests/multiSignWallet.test.js
 
 # Purpose
 
