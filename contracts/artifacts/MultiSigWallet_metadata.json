@@ -235,6 +235,35 @@
 			{
 				"inputs": [
 					{
+						"internalType": "address",
+						"name": "destination",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "createUniqueId",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "bytes32",
 						"name": "id",
 						"type": "bytes32"
@@ -404,12 +433,106 @@
 		],
 		"devdoc": {
 			"kind": "dev",
-			"methods": {},
+			"methods": {
+				"addSigner(address)": {
+					"details": "Only the contract owner can call this function.",
+					"params": {
+						"signer": "The address of the signer to be added."
+					}
+				},
+				"approveTransaction(bytes32)": {
+					"details": "Only signers can call this function.",
+					"params": {
+						"id": "The id of the transaction to approve."
+					}
+				},
+				"cancelTransaction(bytes32)": {
+					"details": "The transaction must exist and must not have already been executed. The function removes the transaction from the transaction list and deletes its details. It also deletes the approvals for the transaction. An event is emitted to notify that the transaction has been cancelled.",
+					"params": {
+						"id": "The ID of the transaction to be cancelled."
+					}
+				},
+				"constructor": {
+					"params": {
+						"_recoveryAddress": "The address that can be used to recover the wallet in case of a lost or compromised account.",
+						"_requiredSignatures": "The minimum number of signatures required to execute a transaction.",
+						"_signers": "An array of addresses representing the initial signers of the wallet."
+					}
+				},
+				"createTransaction(address,uint256,bytes)": {
+					"details": "The function generates a unique ID for the transaction, stores the transaction details in the transactions mapping, adds the transaction ID to the transaction list, and emits an event to notify that a new transaction has been created.",
+					"params": {
+						"data": "Additional data to include with the transaction.",
+						"destination": "The address of the destination for the transaction.",
+						"value": "The amount of ether to send with the transaction."
+					},
+					"returns": {
+						"_0": "The unique ID of the created transaction."
+					}
+				},
+				"createUniqueId(address,uint256,bytes)": {
+					"details": "This function uses the keccak256 hash function to generate a unique ID for a transaction. The ID is based on the destination address, the amount of Ether to send (in wei), the data to include in the transaction, and the current block timestamp.",
+					"params": {
+						"data": "The data to include in the transaction.",
+						"destination": "The address of the destination contract.",
+						"value": "The amount of Ether to send (in wei)."
+					},
+					"returns": {
+						"_0": "A unique transaction ID as a bytes32 value."
+					}
+				},
+				"executeTransaction(bytes32)": {
+					"details": "The transaction must exist in the contract, and the function can only be called by a signer.",
+					"params": {
+						"id": "The ID of the transaction to be approved."
+					}
+				},
+				"recoverWallet(address)": {
+					"details": "Only the recovery address can call this function.",
+					"params": {
+						"newOwner": "The address that will become the new owner of the wallet."
+					}
+				},
+				"removeSigner(address)": {
+					"details": "Only the owner of the contract can call this function.",
+					"params": {
+						"signer": "The address of the signer to be removed."
+					}
+				}
+			},
 			"version": 1
 		},
 		"userdoc": {
 			"kind": "user",
-			"methods": {},
+			"methods": {
+				"addSigner(address)": {
+					"notice": "This function adds a new signer to the list of signers"
+				},
+				"approveTransaction(bytes32)": {
+					"notice": "This function approves a transaction identified by its id."
+				},
+				"cancelTransaction(bytes32)": {
+					"notice": "Allows a signer to cancel a transaction."
+				},
+				"constructor": {
+					"notice": "A constructor to initialize the contract and set the signers, required signatures and recovery address."
+				},
+				"createTransaction(address,uint256,bytes)": {
+					"notice": "Creates a new transaction with the provided destination address, value, and data."
+				},
+				"createUniqueId(address,uint256,bytes)": {
+					"notice": "Generates a unique ID for a transaction."
+				},
+				"executeTransaction(bytes32)": {
+					"notice": "Approves a transaction identified by the given ID."
+				},
+				"recoverWallet(address)": {
+					"notice": "Recovers a wallet by transferring ownership to a new address."
+				},
+				"removeSigner(address)": {
+					"notice": "Removes a signer from the list of signers."
+				}
+			},
 			"version": 1
 		}
 	},
@@ -430,11 +553,11 @@
 	},
 	"sources": {
 		"contracts/MultiSigWallet.sol": {
-			"keccak256": "0x90c3ddea18c38352198b310e464942618a4bd88721a10be9fdbe5e5babde2a1a",
+			"keccak256": "0xa098e41aa2f35f56067b282df6ebb03e3ef21065d160a89e395686ab6b2ff5d8",
 			"license": "UNLICENSED",
 			"urls": [
-				"bzz-raw://aadcdd677a2410ec3059e3a9fb3ed287ad8937cb4b74d343e3ef150edda0cb74",
-				"dweb:/ipfs/QmQzh5LMevSLsrWSSNhgmzkjfKcwVrtR5aWc5RMkVEb8Ce"
+				"bzz-raw://903e782fb6564e7cc6c5db40dd664c5f538bdf5ff3ceb2bd4893cb70e76db423",
+				"dweb:/ipfs/QmcWzpktGvq3aspxZdaAVZEAqxZDhu34aCiKEZVVj5U3eA"
 			]
 		}
 	},
