@@ -1,11 +1,3 @@
-## Contract
-
-The implemented MultiSigWallet contract can be found in /contracts/MultiSigWallet.sol
-
-## Test
-
-The implemented tests can be found in /tests/multiSignWallet.test.js
-
 # Purpose
 
 It’s an opportunity to prove you can build well designed and scalable backend architectures. We also want to gauge your knowledge of the Ethereum blockchain. The assessment is based on real work you’d be doing if you joined Openfort.
