@@ -141,7 +141,12 @@ contract MultiSigWallet {
     @param id The id of the transaction to approve.
     */
     function approveTransaction(bytes32 id) public onlySigner {
+        // require that the transaction has not already been executed
+        require(!transactions[id].executed, "Transaction has already been executed");
+        // require that the transaction exists
         require(transactions[id].destination != address(0), "Transaction does not exist");
+        // require that the signer has not already approved the transaction
+        require(!approvals[id][msg.sender], "Transaction has already been approved by this signer");
 
         approvals[id][msg.sender] = true; // mark the transaction as approved by the signer
         emit Approval(id, msg.sender); // emit an event to notify that the transaction has been approved
