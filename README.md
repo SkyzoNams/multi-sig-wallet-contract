@@ -1,6 +1,6 @@
 ## Project
 
-A Solidity smart contract design and implement a secure multi-signature wallet contract 
+A design and implement a secure multi-signature wallet Solidity smart contract 
 
 
 ## The assessment
