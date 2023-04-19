@@ -1,7 +1,3 @@
-# Purpose
-
-It’s an opportunity to prove you can build well designed and scalable backend architectures. We also want to gauge your knowledge of the Ethereum blockchain. The assessment is based on real work you’d be doing if you joined Openfort.
-
 ## The assessment
 
 - Design and implement a secure multi-sig wallet contract:
@@ -10,13 +6,9 @@ It’s an opportunity to prove you can build well designed and scalable backend 
 - Implement the functionality to add/remove signatures.
 - Implement the functionality to execute a transaction after the required number of signatures have been obtained.
 - Implement the functionality to cancel a transaction before it has been executed.
-
-Extra points for:
-
 - Implementing a way to recover the wallet in case of loss of private keys.
-- Support for WebAuthn (FIDO2) as a second factor of authentication for signing transactions.
 - Access control for actions that can be taken by signatories (e.g. add/remove signatories, execute/cancel transactions).
 
-## Stack
+## Deployment
 
-Deployment in any EVM based blockchain (e.g. Ethereum, Binance Smart Chain, Polygon, etc) is fine.
+The smart contract is deployed on the Sepolia testnet -> https://sepolia.etherscan.io/address/0x65Cf1dAc8D2467A7b53D818F39c1Fc53483fb169 
