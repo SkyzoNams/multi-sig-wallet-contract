@@ -1,6 +1,10 @@
+## Project
+
+A Solidity smart contract design and implement a secure multi-signature wallet contract 
+
+
 ## The assessment
 
-- Design and implement a secure multi-sig wallet contract:
 - Define the number of signatories required to execute a transaction (e.g. 2 out of 3).
 - Define the list of signatories and their addresses.
 - Implement the functionality to add/remove signatures.
